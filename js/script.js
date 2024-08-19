@@ -1,9 +1,15 @@
 function GameBoard() {
-    // code
+    const board = [["", "", ""],
+                   ["", "", ""],
+                   ["", "", ""]]
+
+    const addMark = (mark, row, column) => {
+        board[row][column] = mark;
+    }
 }
 
-function Player() {
-    // more code
+function Player(name, mark) {
+    return {name, mark}
 }
 
 function Game() {
