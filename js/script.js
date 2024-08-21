@@ -8,10 +8,15 @@ function GameBoard() {
     }
 }
 
-function Player(name, mark) {
+function createPlayer(name, mark) {
     return {name, mark}
 }
 
 function Game() {
-    // extra code
+    const player1 = createPlayer("player1", "X")
+    const player2 = createPlayer("player2", "O")
+
+    const startGame = () => {
+        // code
+    }
 }
