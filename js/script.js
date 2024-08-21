@@ -13,10 +13,6 @@ function createGameBoard() {
         console.log(board[2][0] + board[2][1] + board[2][2])
     }
 
-    const updateGameBoard = (player, row, col) => {
-        board[row][col] = player.mark
-    }
-
     return {board, addMark, displayGameBoard}
 }
 
@@ -33,9 +29,9 @@ function Game() {
         gameboard.displayGameBoard()
     }
 
-    const playGame = () => {
-        
+    const playerTurn = (player, row, col) => {
+        gameboard.addMark(player.mark, row, col)
     }
 
-    return {player1, player2, startGame}
+    return {player1, player2, startGame, playerTurn}
 }
