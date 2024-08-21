@@ -43,7 +43,7 @@ function Game() {
         if (!isPlayer2Turn) {
             // playerTurn(player1)
         } else {
-            
+            // playerTurn(player2)
         }
     }
 
