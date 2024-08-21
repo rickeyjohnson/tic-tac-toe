@@ -24,7 +24,9 @@ function Game() {
     const player1 = createPlayer("player1", "X")
     const player2 = createPlayer("player2", "O")
     const gameboard = createGameBoard()
+    let playersTurn = 0
     let position = 0
+    let done = false;
 
     const startGame = () => {
         console.log("00 01 02")
@@ -35,7 +37,6 @@ function Game() {
     }
 
     const turn = (player) => {
-        position = prompt("pick row/column [rowcol]")
         let row = position[0]
         let col = position[1]
 
@@ -45,7 +46,12 @@ function Game() {
     }
 
     const game = () => {
-        // game code
+        startGame()
+
+        while (!done) {
+            position = prompt("pick row/column [rowcol]")
+            playersTurn ? turn(player1) : turn(player2) 
+        } // TODO: catch out of bound indexes, catch non number indexes
     }
 
     return {player1, player2, startGame, turn, game}
