@@ -24,14 +24,7 @@ function Game() {
     const player1 = createPlayer("player1", "X")
     const player2 = createPlayer("player2", "O")
     const gameboard = createGameBoard()
-
-    const turn = () => {
-        // code
-    }
-
-    const playerTurn = (player, row, col) => {
-        gameboard.addMark(player.mark, row, col)
-    }
+    const isPlayer2Turn = 0         // 0 for player 1    1 for player 2
 
     const startGame = () => {
         console.log("00 01 02")
@@ -39,7 +32,19 @@ function Game() {
         console.log("20 21 22")
 
         console.log("---------")
-        console.log("pick row/column [rowcol]")
+        prompt("pick row/column [rowcol]")
+    }
+
+    const playerTurn = (player, row, col) => {
+        gameboard.addMark(player.mark, row, col)
+    }
+
+    const turn = () => {
+        if (!isPlayer2Turn) {
+            // playerTurn(player1)
+        } else {
+            
+        }
     }
 
     return {player1, player2, startGame, playerTurn}
