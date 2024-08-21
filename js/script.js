@@ -12,6 +12,8 @@ function createGameBoard() {
         console.log(board[1][0] + board[1][1] + board[1][2])
         console.log(board[2][0] + board[2][1] + board[2][2])
     }
+
+    return {board, addMark, displayGameBoard}
 }
 
 function createPlayer(name, mark) {
@@ -26,4 +28,6 @@ function Game() {
     const startGame = () => {
         gameboard.displayGameBoard()
     }
+
+    return {player1, player2, startGame}
 }
