@@ -25,12 +25,21 @@ function Game() {
     const player2 = createPlayer("player2", "O")
     const gameboard = createGameBoard()
 
-    const startGame = () => {
-        gameboard.displayGameBoard()
+    const turn = () => {
+        // code
     }
 
     const playerTurn = (player, row, col) => {
         gameboard.addMark(player.mark, row, col)
+    }
+
+    const startGame = () => {
+        console.log("00 01 02")
+        console.log("10 11 12")
+        console.log("20 21 22")
+
+        console.log("---------")
+        console.log("pick row/column [rowcol]")
     }
 
     return {player1, player2, startGame, playerTurn}
