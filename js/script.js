@@ -60,7 +60,8 @@ function Game() {
         console.log("---------")
     }
 
-    const turn = (player, position) => {
+    const turn = (player) => {
+        let position = prompt(player.name + " type in row/col")
         let row = position[0]
         let col = position[1]
 
@@ -70,11 +71,11 @@ function Game() {
     }
 
     const game = () => {
+        let roundCount = 1
         startGame()
 
-        while (!done) {
-            let position = prompt("pick row/column [rowcol]")
-            player1Turn ? turn(player1, position) : turn(player2, position) 
+        while (!done || roundCount < 9) {
+            player1Turn ? turn(player1) : turn(player2) 
 
             if (gameboard.checkWinner()) {
                 done = true
@@ -82,7 +83,7 @@ function Game() {
             }
 
             player1Turn = !player1Turn
-
+            roundCount++
         } // TODO: catch out of bound indexes, catch non number indexes
     }
 
