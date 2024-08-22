@@ -46,7 +46,7 @@ function createGameBoard() {
         return false
     }
 
-    return {board, addMark, display, checkWinner}
+    return {board, addMark, display, checkWinner, isPositionTaken}
 }
 
 function createPlayer(name, mark) {
@@ -72,6 +72,12 @@ function Game() {
         let position = prompt(player.name + " type in row/col")
         let row = position[0]
         let col = position[1]
+
+        while (gameboard.isPositionTaken(row, col)) {
+            position = prompt("that row is taken, pick another one!")
+            row = position[0]
+            col = position[1]
+        }
 
         gameboard.addMark(player.mark, row, col)
 
