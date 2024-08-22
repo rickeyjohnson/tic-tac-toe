@@ -78,6 +78,12 @@ function Game() {
 
     const turn = (player) => {
         let position = prompt(player.name + " type in row/col")
+
+        // error catching
+        while (typeof position !== Number) {
+            position = prompt("invalid entry (only numbers allowed), try again")
+        }
+
         let row = position[0]
         let col = position[1]
 
