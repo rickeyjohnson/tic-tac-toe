@@ -71,20 +71,18 @@ function Game() {
     }
 
     const game = () => {
-        let roundCount = 1
         startGame()
 
-        while (!done || roundCount < 9) {
+        for (let i = 0; i < 9; i++) {
             player1Turn ? turn(player1) : turn(player2) 
 
             if (gameboard.checkWinner()) {
-                done = true
                 console.log("winner!")
+                break
             }
 
             player1Turn = !player1Turn
-            roundCount++
-        } // TODO: catch out of bound indexes, catch non number indexes
+        }
     }
 
     return {player1, player2, startGame, turn, game}
