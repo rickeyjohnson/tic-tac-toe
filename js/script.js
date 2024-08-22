@@ -13,7 +13,32 @@ function createGameBoard() {
         console.log(board[2][0] + board[2][1] + board[2][2])
     }
 
-    return {board, addMark, display}
+    const checkWinner = () => {
+        const allEqual = (arr) => arr.every(val => val === arr[0]);
+
+        // check rows
+        for (let row = 0; row < 3; row++) {
+            if (allEqual(board[row]) && !board[row].includes("#")) {
+                return true
+            }
+        }
+
+        // check columns
+        for (let col = 0; col < 3; col++) {
+            let tempArr = []
+
+            for (let row = 0; row < 3; col++) {
+                tempArr.push(board[row][col])
+            }
+
+            if (allEqual(tempArr) && !tempArr.includes("#")) {
+                return true
+            }
+        }
+        
+    }
+
+    return {board, addMark, display, checkWinner}
 }
 
 function createPlayer(name, mark) {
@@ -51,6 +76,10 @@ function Game() {
         while (!done) {
             position = prompt("pick row/column [rowcol]")
             playersTurn ? turn(player1) : turn(player2) 
+            if (gameboard.checkWinner()) {
+                done = true
+                console.log("im done!")
+            }
         } // TODO: catch out of bound indexes, catch non number indexes
     }
 
