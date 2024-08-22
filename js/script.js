@@ -27,7 +27,7 @@ function createGameBoard() {
         for (let col = 0; col < 3; col++) {
             let tempArr = []
 
-            for (let row = 0; row < 3; col++) {
+            for (let row = 0; row < 3; row++) {
                 tempArr.push(board[row][col])
             }
 
@@ -49,9 +49,8 @@ function Game() {
     const player1 = createPlayer("player1", "X")
     const player2 = createPlayer("player2", "O")
     const gameboard = createGameBoard()
-    let playersTurn = 0
-    let position = 0
-    let done = false;
+    let player1Turn = true
+    let done = false
 
     const startGame = () => {
         console.log("00 01 02")
@@ -61,7 +60,7 @@ function Game() {
         console.log("---------")
     }
 
-    const turn = (player) => {
+    const turn = (player, position) => {
         let row = position[0]
         let col = position[1]
 
@@ -74,12 +73,16 @@ function Game() {
         startGame()
 
         while (!done) {
-            position = prompt("pick row/column [rowcol]")
-            playersTurn ? turn(player1) : turn(player2) 
+            let position = prompt("pick row/column [rowcol]")
+            player1Turn ? turn(player1, position) : turn(player2, position) 
+
             if (gameboard.checkWinner()) {
                 done = true
-                console.log("im done!")
+                console.log("winner!")
             }
+
+            player1Turn = !player1Turn
+
         } // TODO: catch out of bound indexes, catch non number indexes
     }
 
