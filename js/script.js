@@ -38,6 +38,14 @@ function createGameBoard() {
         
     }
 
+    const isPositionTaken = (row, col) => {
+        if (board[row][col] !== "#") {
+            return true
+        }
+
+        return false
+    }
+
     return {board, addMark, display, checkWinner}
 }
 
