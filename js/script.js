@@ -76,8 +76,17 @@ function Game() {
         console.log("---------")
     }
 
-    const isValid = () => {
-        // error checking user entry
+    const isValid = (position) => {
+        let r = position[0]
+        let c = position[1]
+
+        try {
+            let tempVal = board[r][c]
+        } catch { 
+            return false
+        }
+
+        return true
     }
 
     const turn = (player) => {
