@@ -54,7 +54,22 @@ function createGameBoard() {
         return false
     }
 
-    return {board, addMark, display, checkWinner, isPositionTaken}
+    const isValid = (position) => {
+        let r = position[0]
+        let c = position[1]
+
+        console.log(r + " " + c)
+
+        try {
+            board[r][c] // throws error is invalid position
+        } catch (error) { 
+            return false
+        }
+
+        return true
+    }
+
+    return {board, addMark, display, checkWinner, isPositionTaken, isValid}
 }
 
 function createPlayer(name, mark) {
@@ -66,7 +81,6 @@ function Game() {
     const player2 = createPlayer("player2", "O")
     const gameboard = createGameBoard()
     let player1Turn = true
-    let done = false
 
     const startGame = () => {
         console.log("00 01 02")
@@ -76,24 +90,18 @@ function Game() {
         console.log("---------")
     }
 
-    const isValid = (position) => {
-        let r = position[0]
-        let c = position[1]
-
-        try {
-            let tempVal = board[r][c]
-        } catch { 
-            return false
-        }
-
-        return true
-    }
-
     const turn = (player) => {
         let position = prompt(player.name + " type in row/col")
         let row, col
 
-        // to add isValid method here
+        // TODO: make validitity a function so it's easily plug and play inside the position taken checker!
+
+        while (!gameboard.isValid(position)) {
+            position = prompt(player.name + " please enter proper position (ugly)")
+        }
+
+        row = position[0]
+        col = position[0]
 
         while (gameboard.isPositionTaken(row, col)) {
             position = prompt("that row is taken, pick another one!")
