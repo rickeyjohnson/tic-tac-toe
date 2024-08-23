@@ -47,12 +47,9 @@ function createGameBoard() {
     }
 
     const isPositionTaken = (row, col) => {
-        console.log(board[row][col])
-        if (board[row][col] === "#") {
-            return false
+        if (board[row][col] !== "#") {
+            return true
         }
-
-        return true
     }
 
     const isValid = (position) => {
@@ -125,7 +122,7 @@ function Game() {
             player1Turn ? turn(player1) : turn(player2) 
 
             if (gameboard.checkWinner()) {
-                console.log("winner!")
+                player1Turn ? console.log(player1.name + " is the winner!") : console.log(player2.name + " is the winner!")
                 break
             }
 
