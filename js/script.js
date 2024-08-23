@@ -47,18 +47,17 @@ function createGameBoard() {
     }
 
     const isPositionTaken = (row, col) => {
-        if (board[row][col] !== "#") {
-            return true
+        console.log(board[row][col])
+        if (board[row][col] === "#") {
+            return false
         }
 
-        return false
+        return true
     }
 
     const isValid = (position) => {
         let r = position[0]
         let c = position[1]
-
-        console.log(r + " " + c)
 
         try {
             board[r][c] // throws error is invalid position
@@ -101,10 +100,15 @@ function Game() {
         }
 
         row = position[0]
-        col = position[0]
+        col = position[1]
 
         while (gameboard.isPositionTaken(row, col)) {
             position = prompt("that row is taken, pick another one!")
+
+            while (!gameboard.isValid(position)) {
+                position = prompt(player.name + " please enter proper position (ugly)")
+            }
+
             row = position[0]
             col = position[1]
         }
