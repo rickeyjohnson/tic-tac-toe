@@ -91,8 +91,9 @@ function Game() {
 
     const turn = (player) => {
         let position = prompt(player.name + " type in row/col")
-        let row = position[0]
-        let col = position[1]
+        let row, col
+
+        // to add isValid method here
 
         while (gameboard.isPositionTaken(row, col)) {
             position = prompt("that row is taken, pick another one!")
