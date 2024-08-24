@@ -45,6 +45,7 @@ body {
   align-items: center;
   flex-direction: column;
   flex: 1;
+  gap: 2rem;
 }
 
 #footer {
@@ -52,10 +53,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: "Archivo Black", monospace;
-  color: #c70559;
   margin-bottom: 1rem;
 }
 #footer a {
+  color: #c70559;
+}
+
+.label {
+  font-family: "Archivo Black", monospace;
   color: #c70559;
 }/*# sourceMappingURL=style.css.map */

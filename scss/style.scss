@@ -53,16 +53,20 @@ body {
     @include flexCenter();
     flex-direction: column;
     flex: 1;
+    gap: 2rem;
 }
 
 #footer {
     @include flexCenter();
     flex-direction: column;
-    font-family: 'Archivo Black', monospace;
-    color: $accent-color;
     margin-bottom: 1rem;
     
     a {
         color: $accent-color;
     }
+}
+
+.label {
+    font-family: 'Archivo Black', monospace;
+    color: $accent-color;
 }

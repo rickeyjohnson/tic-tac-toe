@@ -1,7 +1,7 @@
 function createGameBoard() {
-    const board = [["#", "#", "#"],
-                   ["#", "#", "#"],
-                   ["#", "#", "#"]]
+    const board = [["", "", ""],
+                   ["", "", ""],
+                   ["", "", ""]]
 
     const addMark = (mark, row, column) => {
         board[row][column] = mark;
@@ -19,7 +19,7 @@ function createGameBoard() {
 
         // check rows
         for (let row = 0; row < 3; row++) {
-            if (allEqual(board[row]) && !board[row].includes("#")) {
+            if (allEqual(board[row]) && !board[row].includes("")) {
                 return true
             }
         }
@@ -32,7 +32,7 @@ function createGameBoard() {
                 tempArr.push(board[row][col])
             }
 
-            if (allEqual(tempArr) && !tempArr.includes("#")) {
+            if (allEqual(tempArr) && !tempArr.includes("")) {
                 return true
             }
         }
@@ -47,7 +47,7 @@ function createGameBoard() {
     }
 
     const isPositionTaken = (row, col) => {
-        if (board[row][col] !== "#") {
+        if (board[row][col] !== "") {
             return true
         }
     }
@@ -73,18 +73,18 @@ function createPlayer(name, mark) {
 }
 
 function Game() {
-    const player1 = createPlayer("player1", "X")
-    const player2 = createPlayer("player2", "O")
+    const player1 = createPlayer("X", "X")
+    const player2 = createPlayer("O", "O")
     const gameboard = createGameBoard()
     let player1Turn = true
 
-    const startGame = () => {
-        console.log("00 01 02")
-        console.log("10 11 12")
-        console.log("20 21 22")
+    // const startGame = () => {
+    //     console.log("00 01 02")
+    //     console.log("10 11 12")
+    //     console.log("20 21 22")
 
-        console.log("---------")
-    }
+    //     console.log("---------")
+    // }
 
     const turn = (player) => {
         let position = prompt(player.name + " type in row/col")
@@ -116,7 +116,7 @@ function Game() {
     }
 
     const game = () => {
-        startGame()
+        // startGame()
 
         for (let i = 0; i < 9; i++) {
             player1Turn ? turn(player1) : turn(player2) 
@@ -130,5 +130,7 @@ function Game() {
         }
     }
 
-    return {player1, player2, startGame, turn, game}
+    return {game}
 }
+
+const game = Game()
