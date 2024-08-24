@@ -11,7 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 2rem;
+  background-color: #ffcbe1;
 }
 
 #turn-label {
@@ -21,7 +21,7 @@ body {
 #tic-tac-toe-container {
   width: 540px;
   height: 540px;
-  background-color: black;
+  background-color: #c70559;
   display: grid;
   grid-template-columns: repeat(3, 166.6666666667px);
   grid-template-rows: repeat(3, 166.6666666667px);
@@ -31,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #ffcbe1;
   font-family: "Archivo Black", serif;
   font-size: 7rem;
 }
@@ -45,4 +45,17 @@ body {
   align-items: center;
   flex-direction: column;
   flex: 1;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Archivo Black", monospace;
+  color: #c70559;
+  margin-bottom: 1rem;
+}
+#footer a {
+  color: #c70559;
 }/*# sourceMappingURL=style.css.map */

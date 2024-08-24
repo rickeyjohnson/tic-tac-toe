@@ -1,5 +1,7 @@
 $length: 500px;
 $gap: 20px;
+$background-color: #ffcbe1;
+$accent-color: #c70559;
 
 @mixin flexCenter {
     display: flex;
@@ -19,7 +21,7 @@ body {
     box-sizing: border-box;
     @include flexCenter();
     flex-direction: column;
-    gap: 2rem;
+    background-color: $background-color;
 }
 
 #turn-label {
@@ -29,7 +31,7 @@ body {
 #tic-tac-toe-container {
     width: $length + calc($gap * 2);
     height: $length + calc($gap * 2);
-    background-color: black;
+    background-color: $accent-color;
     display: grid;
     grid-template-columns: repeat(3, calc($length / 3));
     grid-template-rows: repeat(3, calc($length / 3));
@@ -37,7 +39,7 @@ body {
 
     .box {
         @include flexCenter;
-        background-color: white;
+        background-color: $background-color;
         font-family: 'Archivo Black', serif;
         font-size: 7rem;
 
@@ -54,5 +56,13 @@ body {
 }
 
 #footer {
+    @include flexCenter();
+    flex-direction: column;
+    font-family: 'Archivo Black', monospace;
+    color: $accent-color;
+    margin-bottom: 1rem;
     
+    a {
+        color: $accent-color;
+    }
 }
