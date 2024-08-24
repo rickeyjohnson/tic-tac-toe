@@ -1,4 +1,5 @@
 $length: 500px;
+$gap: 20px;
 
 @font-face {
     font-family: "Archivo Black";
@@ -16,11 +17,13 @@ html, body {
 }
 
 #tic-tac-toe-container {
-    width: $length;
-    height: $length;
+    width: $length + calc($gap * 2);
+    height: $length + calc($gap * 2);
     background-color: black;
     display: grid;
-    gap: 10px;
+    grid-template-columns: repeat(3, calc($length / 3));
+    grid-template-rows: repeat(3, calc($length / 3));
+    gap: $gap;
 
     .box {
         background-color: white;

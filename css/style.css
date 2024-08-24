@@ -13,11 +13,13 @@ html, body {
 }
 
 #tic-tac-toe-container {
-  width: 500px;
-  height: 500px;
+  width: 540px;
+  height: 540px;
   background-color: black;
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(3, 166.6666666667px);
+  grid-template-rows: repeat(3, 166.6666666667px);
+  gap: 20px;
 }
 #tic-tac-toe-container .box {
   background-color: white;
