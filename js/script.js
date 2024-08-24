@@ -149,9 +149,16 @@ function Game() {
 
         boxes.forEach((box) => {
             box.addEventListener("click", () => {
+                // check if box is taken
+
+                // place mark down
                 box.textContent = currentPlayer.mark
-                currentPlayer = changeCurrentPlayer(currentPlayer)
+
+                // update UI
                 updateTurnLabel(currentPlayer)
+
+                // switch turns
+                currentPlayer = changeCurrentPlayer(currentPlayer)
             })
         })
     }
