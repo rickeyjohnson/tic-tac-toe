@@ -1,3 +1,6 @@
+const turnLabel = document.querySelector(".turn")
+const boxes = document.querySelectorAll(".box")
+
 function createGameBoard() {
     const board = [["", "", ""],
                    ["", "", ""],
@@ -78,13 +81,17 @@ function Game() {
     const gameboard = createGameBoard()
     let player1Turn = true
 
-    // const startGame = () => {
-    //     console.log("00 01 02")
-    //     console.log("10 11 12")
-    //     console.log("20 21 22")
+    const updateTurnLabel = (player) => {
+        turnLabel.textContent = player.name
+    }
 
-    //     console.log("---------")
-    // }
+    const changeCurrentPlayer = (currentPlayer) => {
+        if (currentPlayer === player1) {
+            return player2
+        }
+
+        return player1
+    }
 
     const turn = (player) => {
         let position = prompt(player.name + " type in row/col")
@@ -116,21 +123,41 @@ function Game() {
     }
 
     const game = () => {
-        // startGame()
+        let currentPlayer = player1
 
-        for (let i = 0; i < 9; i++) {
-            player1Turn ? turn(player1) : turn(player2) 
+        // for (let i = 0; i < 9; i++) {
 
-            if (gameboard.checkWinner()) {
-                player1Turn ? console.log(player1.name + " is the winner!") : console.log(player2.name + " is the winner!")
-                break
-            }
+        //     // player1Turn ? currentPlayer = player1 : currentPlayer = player2
 
-            player1Turn = !player1Turn
-        }
+        //     // updateTurnLabel(currentPlayer)
+
+        //     // boxes.forEach((box) => {
+        //     //     box.addEventListener("click", () => {
+        //     //         box.textContent = currentPlayer.mark
+        //     //     })
+        //     // })
+
+        //     // player1Turn ? turn(player1) : turn(player2) 
+
+        //     // if (gameboard.checkWinner()) {
+        //     //     player1Turn ? console.log(player1.name + " is the winner!") : console.log(player2.name + " is the winner!")
+        //     //     break
+        //     // }
+
+        //     player1Turn = !player1Turn
+        // }
+
+        boxes.forEach((box) => {
+            box.addEventListener("click", () => {
+                box.textContent = currentPlayer.mark
+                updateTurnLabel(currentPlayer)
+                player1Turn = !player1Turn
+            })
+        })
     }
 
     return {game}
 }
 
 const game = Game()
+game.game()
