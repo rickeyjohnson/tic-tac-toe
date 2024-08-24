@@ -22,10 +22,13 @@ html, body {
   gap: 20px;
 }
 #tic-tac-toe-container .box {
-  background-color: white;
-  font-family: "Archivo Black", serif;
-  font-size: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  font-family: "Archivo Black", serif;
+  font-size: 7rem;
+}
+#tic-tac-toe-container .box:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

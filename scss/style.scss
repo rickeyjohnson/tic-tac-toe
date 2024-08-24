@@ -32,9 +32,13 @@ html, body {
     gap: $gap;
 
     .box {
+        @include flexCenter;
         background-color: white;
         font-family: 'Archivo Black', serif;
         font-size: 7rem;
-        @include flexCenter;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
