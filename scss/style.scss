@@ -12,10 +12,14 @@ $gap: 20px;
     src: url("../fonts/Archivo_Black/ArchivoBlack-Regular.ttf");
 }
 
-html, body {
+body {
     padding: 0;
     margin: 0;
+    height: 100vh;
     box-sizing: border-box;
+    @include flexCenter();
+    flex-direction: column;
+    gap: 2rem;
 }
 
 #turn-label {
@@ -41,4 +45,14 @@ html, body {
             cursor: pointer;
         }
     }
+}
+
+#main {
+    @include flexCenter();
+    flex-direction: column;
+    flex: 1;
+}
+
+#footer {
+    
 }

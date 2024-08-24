@@ -2,10 +2,16 @@
   font-family: "Archivo Black";
   src: url("../fonts/Archivo_Black/ArchivoBlack-Regular.ttf");
 }
-html, body {
+body {
   padding: 0;
   margin: 0;
+  height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 #turn-label {
@@ -31,4 +37,12 @@ html, body {
 }
 #tic-tac-toe-container .box:hover {
   cursor: pointer;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
 }/*# sourceMappingURL=style.css.map */
