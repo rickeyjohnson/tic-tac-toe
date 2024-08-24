@@ -1,6 +1,12 @@
 $length: 500px;
 $gap: 20px;
 
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @font-face {
     font-family: "Archivo Black";
     src: url("../fonts/Archivo_Black/ArchivoBlack-Regular.ttf");
@@ -13,7 +19,7 @@ html, body {
 }
 
 #turn-label {
-    font-family: 'Archivo Black';
+    font-family: 'Archivo Black', serif;
 }
 
 #tic-tac-toe-container {
@@ -27,5 +33,8 @@ html, body {
 
     .box {
         background-color: white;
+        font-family: 'Archivo Black', serif;
+        font-size: 7rem;
+        @include flexCenter;
     }
 }

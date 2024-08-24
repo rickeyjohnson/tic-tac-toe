@@ -9,7 +9,7 @@ html, body {
 }
 
 #turn-label {
-  font-family: "Archivo Black";
+  font-family: "Archivo Black", serif;
 }
 
 #tic-tac-toe-container {
@@ -23,4 +23,9 @@ html, body {
 }
 #tic-tac-toe-container .box {
   background-color: white;
+  font-family: "Archivo Black", serif;
+  font-size: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
