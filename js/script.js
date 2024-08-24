@@ -150,8 +150,8 @@ function Game() {
         boxes.forEach((box) => {
             box.addEventListener("click", () => {
                 box.textContent = currentPlayer.mark
+                currentPlayer = changeCurrentPlayer(currentPlayer)
                 updateTurnLabel(currentPlayer)
-                player1Turn = !player1Turn
             })
         })
     }
