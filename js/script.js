@@ -2,9 +2,9 @@ const turnLabel = document.querySelector(".turn")
 const boxes = document.querySelectorAll(".box")
 
 function createGameBoard() {
-    const board = [["", "", ""],
-                   ["", "", ""],
-                   ["", "", ""]]
+    const board = [["#", "#", "#"],
+                   ["#", "#", "#"],
+                   ["#", "#", "#"]]
 
     const addMark = (mark, row, column) => {
         board[row][column] = mark;
@@ -22,7 +22,7 @@ function createGameBoard() {
 
         // check rows
         for (let row = 0; row < 3; row++) {
-            if (allEqual(board[row]) && !board[row].includes("")) {
+            if (allEqual(board[row]) && !board[row].includes("#")) {
                 return true
             }
         }
@@ -35,7 +35,7 @@ function createGameBoard() {
                 tempArr.push(board[row][col])
             }
 
-            if (allEqual(tempArr) && !tempArr.includes("")) {
+            if (allEqual(tempArr) && !tempArr.includes("#")) {
                 return true
             }
         }
@@ -50,7 +50,7 @@ function createGameBoard() {
     }
 
     const isPositionTaken = (row, col) => {
-        if (board[row][col] !== "") {
+        if (board[row][col] !== "#") {
             return true
         }
     }
@@ -79,7 +79,6 @@ function Game() {
     const player1 = createPlayer("X", "X")
     const player2 = createPlayer("O", "O")
     const gameboard = createGameBoard()
-    let player1Turn = true
 
     const updateTurnLabel = (player) => {
         turnLabel.textContent = player.name
@@ -93,72 +92,46 @@ function Game() {
         return player1
     }
 
-    const turn = (player) => {
-        let position = prompt(player.name + " type in row/col")
-        let row, col
+    const isPositionTaken = (box) => {
+        return (box.textContent !== "")
+    }
 
-        // TODO: make validitity a function so it's easily plug and play inside the position taken checker!
-
-        while (!gameboard.isValid(position)) {
-            position = prompt(player.name + " please enter proper position (ugly)")
-        }
-
-        row = position[0]
-        col = position[1]
-
-        while (gameboard.isPositionTaken(row, col)) {
-            position = prompt("that row is taken, pick another one!")
-
-            while (!gameboard.isValid(position)) {
-                position = prompt(player.name + " please enter proper position (ugly)")
-            }
-
-            row = position[0]
-            col = position[1]
-        }
+    const turn = (player, position) => {
+        let row = position[0]
+        let col = position[1]
 
         gameboard.addMark(player.mark, row, col)
-
-        gameboard.display()
     }
 
     const game = () => {
         let currentPlayer = player1
-
-        // for (let i = 0; i < 9; i++) {
-
-        //     // player1Turn ? currentPlayer = player1 : currentPlayer = player2
-
-        //     // updateTurnLabel(currentPlayer)
-
-        //     // boxes.forEach((box) => {
-        //     //     box.addEventListener("click", () => {
-        //     //         box.textContent = currentPlayer.mark
-        //     //     })
-        //     // })
-
-        //     // player1Turn ? turn(player1) : turn(player2) 
-
-        //     // if (gameboard.checkWinner()) {
-        //     //     player1Turn ? console.log(player1.name + " is the winner!") : console.log(player2.name + " is the winner!")
-        //     //     break
-        //     // }
-
-        //     player1Turn = !player1Turn
-        // }
+        let i = 1
 
         boxes.forEach((box) => {
             box.addEventListener("click", () => {
                 // check if box is taken
+                if (isPositionTaken(box)) {
+                    return
+                }
+
+                // do players turn
+                let position = box.getAttribute("id")
+                turn(currentPlayer, position)
 
                 // place mark down
                 box.textContent = currentPlayer.mark
 
-                // update UI
-                updateTurnLabel(currentPlayer)
+                // check for winner
+                if (gameboard.checkWinner()) {
+                    turnLabel.textContent = currentPlayer.name + " WINS"
+                    return
+                }
 
                 // switch turns
                 currentPlayer = changeCurrentPlayer(currentPlayer)
+
+                // update turn label UI
+                updateTurnLabel(currentPlayer)
             })
         })
     }
