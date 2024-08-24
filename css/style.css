@@ -21,7 +21,7 @@ body {
 #tic-tac-toe-container {
   width: 540px;
   height: 540px;
-  background-color: #c70559;
+  background-color: #d82a75;
   display: grid;
   grid-template-columns: repeat(3, 166.6666666667px);
   grid-template-rows: repeat(3, 166.6666666667px);
@@ -34,6 +34,7 @@ body {
   background-color: #ffcbe1;
   font-family: "Archivo Black", serif;
   font-size: 7rem;
+  color: #f6afcc;
 }
 #tic-tac-toe-container .box:hover {
   cursor: pointer;
@@ -56,10 +57,10 @@ body {
   margin-bottom: 1rem;
 }
 #footer a {
-  color: #c70559;
+  color: #d82a75;
 }
 
 .label {
   font-family: "Archivo Black", monospace;
-  color: #c70559;
+  color: #d82a75;
 }/*# sourceMappingURL=style.css.map */

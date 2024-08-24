@@ -1,7 +1,8 @@
 $length: 500px;
 $gap: 20px;
 $background-color: #ffcbe1;
-$accent-color: #c70559;
+$accent-color: #d82a75;
+$X-O-color: #f6afcc;
 
 @mixin flexCenter {
     display: flex;
@@ -42,6 +43,7 @@ body {
         background-color: $background-color;
         font-family: 'Archivo Black', serif;
         font-size: 7rem;
+        color: $X-O-color;
 
         &:hover {
             cursor: pointer;
