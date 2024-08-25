@@ -78,7 +78,7 @@ function createGameBoard() {
         return true
     }
 
-    return {board, addMark, display, checkWinner, isPositionTaken, isValid, clearBoard}
+    return {board, addMark, checkWinner, isPositionTaken, isValid, clearBoard}
 }
 
 function createPlayer(name, mark) {
