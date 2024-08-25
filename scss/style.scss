@@ -60,11 +60,35 @@ body {
 
 #footer {
     @include flexCenter();
-    flex-direction: column;
     margin-bottom: 1rem;
+    gap: 2rem;
     
     a {
         color: $accent-color;
+    }
+
+    #labels {
+        @include flexCenter();
+        flex-direction: column;
+    }
+
+    button {
+        background-color: $accent-color;
+        border: 4px $accent-color solid; 
+        color: white;
+        font-family: 'Archivo Black', monospace;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: white;
+            border: 4px $accent-color solid; 
+            color: $accent-color;
+        }
     }
 }
 

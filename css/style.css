@@ -53,10 +53,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   margin-bottom: 1rem;
+  gap: 2rem;
 }
 #footer a {
+  color: #d82a75;
+}
+#footer #labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#footer button {
+  background-color: #d82a75;
+  border: 4px #d82a75 solid;
+  color: white;
+  font-family: "Archivo Black", monospace;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+}
+#footer button:hover {
+  cursor: pointer;
+}
+#footer button:active {
+  background-color: white;
+  border: 4px #d82a75 solid;
   color: #d82a75;
 }
 
