@@ -1,5 +1,6 @@
 const turnLabel = document.querySelector(".turn")
 const boxes = document.querySelectorAll(".box")
+const resetButton = document.querySelector("#resetBtn")
 
 function createGameBoard() {
     const board = [["#", "#", "#"],
@@ -146,6 +147,10 @@ function Game() {
 
                 i++
             })
+        })
+
+        resetButton.addEventListener("click", () => {
+            console.log("reset")
         })
     }
 
