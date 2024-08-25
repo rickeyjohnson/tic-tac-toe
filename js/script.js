@@ -105,10 +105,15 @@ function Game() {
 
     const game = () => {
         let currentPlayer = player1
+        let gameover = false
         let i = 1
 
         boxes.forEach((box) => {
             box.addEventListener("click", () => {
+                if (gameover) {
+                    return
+                }
+
                 // check if box is taken
                 if (isPositionTaken(box)) {
                     return
@@ -124,6 +129,7 @@ function Game() {
                 // check for winner
                 if (gameboard.checkWinner()) {
                     turnLabel.textContent = currentPlayer.name + " WINS"
+                    gameover = true
                     return
                 }
 
@@ -132,6 +138,13 @@ function Game() {
 
                 // update turn label UI
                 updateTurnLabel(currentPlayer)
+
+                if (i >= 9) {
+                    turnLabel.textContent = "TIE"
+                    gameover = true
+                }
+
+                i++
             })
         })
     }
