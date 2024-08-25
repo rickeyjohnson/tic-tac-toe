@@ -7,6 +7,15 @@ function createGameBoard() {
                    ["#", "#", "#"],
                    ["#", "#", "#"]]
 
+    const clearBoard = () => {
+
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                board[row][col] = "#"
+            }
+        }
+    }
+
     const addMark = (mark, row, column) => {
         board[row][column] = mark;
     }
@@ -69,7 +78,7 @@ function createGameBoard() {
         return true
     }
 
-    return {board, addMark, display, checkWinner, isPositionTaken, isValid}
+    return {board, addMark, display, checkWinner, isPositionTaken, isValid, clearBoard}
 }
 
 function createPlayer(name, mark) {
@@ -102,6 +111,12 @@ function Game() {
         let col = position[1]
 
         gameboard.addMark(player.mark, row, col)
+    }
+
+    const clearScreen = () => {
+        boxes.forEach((box) => {
+            box.textContent = ""
+        })
     }
 
     const game = () => {
@@ -150,7 +165,11 @@ function Game() {
         })
 
         resetButton.addEventListener("click", () => {
-            console.log("reset")
+            gameover = false
+            i = 1
+            turnLabel.textContent = "X"
+            gameboard.clearBoard()
+            clearScreen()
         })
     }
 
