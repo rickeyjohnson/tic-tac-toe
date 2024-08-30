@@ -92,8 +92,8 @@ function Game() {
     let gameover = false
     let i = 0
 
-    const updateTurnLabel = (player) => {
-        turnLabel.textContent = player.name
+    const updateTurnLabel = (message) => {
+        turnLabel.textContent = message
     }
 
     const changeCurrentPlayer = (currentPlayer) => {
@@ -123,15 +123,17 @@ function Game() {
 
     const AIRound = () => {
         let row, col
-
-        if (i > 9) {
-            gameover = true
-            return
-        }
+        let internalClock = 0
 
         do {
             row = Math.floor(Math.random() * 3)
             col = Math.floor(Math.random() * 3)
+            internalClock += 1
+            
+            if (internalClock > 9) {
+                return
+            }
+
         } while (gameboard.isPositionTaken(row, col))
 
         let AIbox = document.getElementById(row + "" + col)
@@ -140,21 +142,13 @@ function Game() {
         AIbox.textContent = "O"
 
         if (gameboard.checkWinner()) {
-            console.log("AI win")
+            updateTurnLabel("COMPUTER WON :(")
             gameover = true
             return
         }
-
-        gameover = (i >= 9)
-        i++
     }
 
     const round = (box) => {
-        
-        if (i > 9) {
-            gameover = true
-            return
-        }
 
         let position = box.getAttribute("id")
         let row = position[0]
@@ -169,14 +163,15 @@ function Game() {
         box.textContent = "X"
 
         if (gameboard.checkWinner()) {
-            console.log("you win")
+            updateTurnLabel("YOU WON")
             gameover = true
             return
         }
 
-        i++
+        i = i + 1
+        console.log(i)
 
-        AIRound()
+        // problem wasn't fixed, still infinite loop if tie game
     }
 
     const game = () => {
@@ -185,17 +180,24 @@ function Game() {
             box.addEventListener("click", () => {
 
                 if (gameover) {
-                    console.log('gameover')
                     return
                 }
 
                 round(box)
+
+                if (i > 9) {
+                    updateTurnLabel("TIE")
+                    gameover = true
+                    return
+                }
+
+                AIRound()
             })
         })
 
         resetButton.addEventListener("click", () => {
             gameover = false
-            i = 1
+            i = 0
             turnLabel.textContent = "X"
             currentPlayer = player1
             gameboard.clearBoard()
