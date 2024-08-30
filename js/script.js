@@ -129,7 +129,7 @@ function Game() {
             row = Math.floor(Math.random() * 3)
             col = Math.floor(Math.random() * 3)
             internalClock += 1
-            
+
             if (internalClock > 9) {
                 return
             }
@@ -171,7 +171,7 @@ function Game() {
         i = i + 1
         console.log(i)
 
-        // problem wasn't fixed, still infinite loop if tie game
+        // TODO: check winner is faulty, infinite loop, too many global vars
     }
 
     const game = () => {
