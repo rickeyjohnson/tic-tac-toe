@@ -102,9 +102,9 @@ function Game() {
         return player1
     }
 
-    const isPositionTaken = (box) => {
-        return (box.textContent !== "")
-    }
+    // const isPositionTaken = () => {
+    //     return (gameboard.isPositionTaken(row, col))
+    // }
 
     const turn = (player, position) => {
         let row = position[0]
@@ -124,7 +124,10 @@ function Game() {
     }
 
     const round = (position) => {
-        // code
+        let row = position[0]
+        let col = position[1]
+
+        if (isPositionTaken())
     }
 
     const game = () => {
