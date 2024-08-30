@@ -123,8 +123,6 @@ function Game() {
 
     const AIRound = () => {
         let row, col
-        console.log("AI's turn")
-        console.log(i)
 
         if (i > 9) {
             gameover = true
@@ -152,9 +150,7 @@ function Game() {
     }
 
     const round = (box) => {
-        console.log("x's turn")
-        console.log(i)
-
+        
         if (i > 9) {
             gameover = true
             return
