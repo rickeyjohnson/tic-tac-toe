@@ -90,7 +90,7 @@ function Game() {
     const player2 = createPlayer("O", "O")
     const gameboard = createGameBoard()
     let gameover = false
-    let i = 1
+    let i = 0
 
     const updateTurnLabel = (player) => {
         turnLabel.textContent = player.name
@@ -122,8 +122,14 @@ function Game() {
     }
 
     const AIRound = () => {
-        console.log("AI's turn")
         let row, col
+        console.log("AI's turn")
+        console.log(i)
+
+        if (i > 9) {
+            gameover = true
+            return
+        }
 
         do {
             row = Math.floor(Math.random() * 3)
@@ -140,10 +146,19 @@ function Game() {
             gameover = true
             return
         }
+
+        gameover = (i >= 9)
+        i++
     }
 
     const round = (box) => {
-        console.log("x's turn ... adding mark")
+        console.log("x's turn")
+        console.log(i)
+
+        if (i > 9) {
+            gameover = true
+            return
+        }
 
         let position = box.getAttribute("id")
         let row = position[0]
@@ -163,6 +178,8 @@ function Game() {
             return
         }
 
+        i++
+
         AIRound()
     }
 
@@ -170,10 +187,12 @@ function Game() {
 
         boxes.forEach((box) => {
             box.addEventListener("click", () => {
+
                 if (gameover) {
                     console.log('gameover')
                     return
                 }
+
                 round(box)
             })
         })
