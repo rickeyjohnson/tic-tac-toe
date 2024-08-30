@@ -111,7 +111,7 @@ function Game() {
         let col = position[1]
 
         gameboard.addMark(player.mark, row, col)
-    }
+    } // returns nothing
 
     const clearScreen = () => {
         boxes.forEach((box) => {
@@ -168,6 +168,7 @@ function Game() {
             gameover = false
             i = 1
             turnLabel.textContent = "X"
+            currentPlayer = player1
             gameboard.clearBoard()
             clearScreen()
         })
