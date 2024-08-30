@@ -89,6 +89,7 @@ function Game() {
     const player1 = createPlayer("X", "X")
     const player2 = createPlayer("O", "O")
     const gameboard = createGameBoard()
+    let gameover = false
     let i = 1
 
     const updateTurnLabel = (player) => {
@@ -121,10 +122,29 @@ function Game() {
     }
 
     const AIRound = () => {
-        // code
+        console.log("AI's turn")
+        let row, col
+
+        do {
+            row = Math.floor(Math.random() * 3)
+            col = Math.floor(Math.random() * 3)
+        } while (gameboard.isPositionTaken(row, col))
+
+        let AIbox = document.getElementById(row + "" + col)
+
+        gameboard.addMark("O", row, col)
+        AIbox.textContent = "O"
+
+        if (gameboard.checkWinner()) {
+            console.log("AI win")
+            gameover = true
+            return
+        }
     }
 
     const round = (box) => {
+        console.log("x's turn ... adding mark")
+
         let position = box.getAttribute("id")
         let row = position[0]
         let col = position[1]
@@ -138,15 +158,22 @@ function Game() {
         box.textContent = "X"
 
         if (gameboard.checkWinner()) {
-            console.log('winnner winner chicken dinner')
+            console.log("you win")
+            gameover = true
             return
         }
+
+        AIRound()
     }
 
     const game = () => {
 
         boxes.forEach((box) => {
             box.addEventListener("click", () => {
+                if (gameover) {
+                    console.log('gameover')
+                    return
+                }
                 round(box)
             })
         })
