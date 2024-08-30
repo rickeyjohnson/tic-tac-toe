@@ -119,48 +119,19 @@ function Game() {
         })
     }
 
+    const computerRound = () => {
+        // code
+    }
+
+    const round = (position) => {
+        // code
+    }
+
     const game = () => {
-        let currentPlayer = player1
-        let gameover = false
-        let i = 1
 
         boxes.forEach((box) => {
             box.addEventListener("click", () => {
-                if (gameover) {
-                    return
-                }
-
-                // check if box is taken
-                if (isPositionTaken(box)) {
-                    return
-                }
-
-                // do players turn
-                let position = box.getAttribute("id")
-                turn(currentPlayer, position)
-
-                // place mark down
-                box.textContent = currentPlayer.mark
-
-                // check for winner
-                if (gameboard.checkWinner()) {
-                    turnLabel.textContent = currentPlayer.name + " WINS"
-                    gameover = true
-                    return
-                }
-
-                // switch turns
-                currentPlayer = changeCurrentPlayer(currentPlayer)
-
-                // update turn label UI
-                updateTurnLabel(currentPlayer)
-
-                if (i >= 9) {
-                    turnLabel.textContent = "TIE"
-                    gameover = true
-                }
-
-                i++
+                // code
             })
         })
 
